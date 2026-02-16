@@ -1,0 +1,23 @@
+# Configuration for tasks in the vacation planner project.
+research_task:
+  description: >
+    Conduct thorough research about the travel destination {topic}.
+    
+    STEP 1: You MUST call the 'internet_search' tool.
+    STEP 2: When calling the tool, you MUST provide a 'search_query' string like "15 unique facts about {topic}".
+    STEP 3: DO NOT provide a final answer until you have search results.
+    
+    If the tool returns an error about a missing argument, it means YOU failed to provide the 'search_query' string. Try again immediately with a valid string.
+  expected_output: >
+    A list of 15 bullet points highlighting the most important and exciting facts about {topic}.
+  agent: vacation_researcher
+
+reporting_task:
+  description: >
+    Review the research findings and create a detailed report about {topic}.
+  expected_output: >
+    A fully fledged report summarizing key information about {topic},
+    formatted in Markdown without using code block syntax.
+  agent: itinerary_planner
+  output_file: report.md
+  output_format: markdown
