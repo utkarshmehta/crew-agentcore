@@ -1,54 +1,53 @@
-# VacationPlanner Crew
+# Vacation Planner
 
-Welcome to the VacationPlanner Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+This project is an AI-powered travel planning system built using the crewAI framework. It leverages multiple specialized agents to research destinations and generate comprehensive travel reports.
 
-## Installation
+## Overview
 
-Ensure you have Python >=3.10 <3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+The system consists of two primary agents:
+1.  **Vacation Researcher**: Conducts automated internet research to find unique facts and information about a specified destination.
+2.  **Itinerary Planner**: Synthesizes research data into a structured travel report.
 
-First, if you haven't already, install uv:
+The project features a robust search tool with self-healing capabilities to ensure reliable data retrieval even when agent inputs are malformed.
+
+## Prerequisites
+
+- Python 3.10 or higher
+- [uv](https://docs.astral.sh/uv/) for dependency management
+- Serper API Key (for internet search functionality)
+- AWS Bedrock access (configured for us-amazon-nova-pro-v1:0)
+
+## Setup
+
+1. Clone the repository.
+2. Ensure `uv` is installed:
+   ```bash
+   pip install uv
+   ```
+3. Configure environment variables in a `.env` file:
+   ```text
+   SERPER_API_KEY=your_serper_api_key
+   AWS_REGION_NAME=your_aws_region
+   ```
+4. Install dependencies:
+   ```bash
+   uv sync
+   ```
+
+## Usage
+
+To run the vacation planner, execute the following command:
 
 ```bash
-pip install uv
+uv run run_crew
 ```
 
-Next, navigate to your project directory and install the dependencies:
+The destination can be modified in `src/vacation_planner/main.py`. The final report will be generated as `report.md` in the root directory.
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
+## Project Structure
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
-
-- Modify `src/vacation_planner/config/agents.yaml` to define your agents
-- Modify `src/vacation_planner/config/tasks.yaml` to define your tasks
-- Modify `src/vacation_planner/crew.py` to add your own logic, tools and specific args
-- Modify `src/vacation_planner/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
-```
-
-This command initializes the vacation_planner Crew, assembling the agents and assigning them tasks as defined in your configuration.
-
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
-
-## Understanding Your Crew
-
-The vacation_planner Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
-
-## Support
-
-For support, questions, or feedback regarding the VacationPlanner Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
+- `src/vacation_planner/crew.py`: Core logic for agents, tools, and tasks.
+- `src/vacation_planner/main.py`: Entry point for running the crew.
+- `src/vacation_planner/config/agents.yaml`: Configuration for agent roles and goals.
+- `src/vacation_planner/config/tasks.yaml`: Definition of tasks and expected outputs.
+- `streamlitui.py`: Optional Streamlit interface for the application.
