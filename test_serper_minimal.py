@@ -1,5 +1,5 @@
 import os
-os.environ['SERPER_API_KEY'] = '98cc0e456c75e481f9e8ffd6120adb1d456a5a1b'
+os.environ['SERPER_API_KEY'] = '98cc0e456c75e481f9e8ffd6120adb1d456a5XXX'
 from crewai_tools import SerperDevTool
 tool = SerperDevTool()
 try:
