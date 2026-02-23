@@ -1,5 +1,5 @@
 import os
-os.environ['SERPER_API_KEY'] = "98cc0e456c75e481f9e8ffd6120adb1d456a5aXX"
+os.environ['SERPER_API_KEY'] = ""
 
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
